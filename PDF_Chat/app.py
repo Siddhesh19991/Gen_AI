@@ -4,7 +4,7 @@ from PyPDF2 import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 import google.generativeai as genai
-from langchain_community.vectorstores import FAISS
+from langchain_community.vectorstores.faiss import FAISS
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.prompts import PromptTemplate
@@ -102,12 +102,12 @@ def main():
         st.markdown(
             "<p style='font-size: 16px;'>Upload your PDF Files and Click on the Submit & Process Button</p>", unsafe_allow_html=True)
         pdf_docs = st.file_uploader(
-            "", accept_multiple_files=True, label_visibility="collapsed")
+            "Upload PDF Files", accept_multiple_files=True, label_visibility="collapsed")
 
         if st.button("Submit & Process"):
             with st.spinner("Processing..."):
                 raw_text = get_pdf_text(pdf_docs)
-                text_chunks = convert_chunks(raw_text)
+                text_chunks = convert_chuncks(raw_text)
                 convert_vector(text_chunks)
                 st.success("Done")
 
