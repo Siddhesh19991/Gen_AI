@@ -12,6 +12,9 @@ from dotenv import load_dotenv
 
 
 # load_dotenv()  # to load the variables added in the .env file for local
+
+st.write("GOOGLE_API_KEY", st.secrets["GOOGLE_API_KEY"])
+
 genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
 
 
