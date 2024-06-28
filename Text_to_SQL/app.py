@@ -8,6 +8,8 @@ import google.generativeai as genai
 # load_dotenv()  # to load the variables added in the .env file for local
 
 # genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
+os.environ["GOOGLE_API_KEY"] = st.secrets.db_credentials.GOOGLE_API_KEY
+
 genai.configure(api_key=st.secrets.db_credentials.GOOGLE_API_KEY)
 
 
