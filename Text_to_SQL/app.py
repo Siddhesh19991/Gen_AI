@@ -7,10 +7,13 @@ import google.generativeai as genai
 
 # load_dotenv()  # to load the variables added in the .env file for local
 
+
 # genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
 os.environ["GOOGLE_API_KEY"] = st.secrets.db_credentials.GOOGLE_API_KEY
 
 genai.configure(api_key=st.secrets.db_credentials.GOOGLE_API_KEY)
+
+db_path = os.path.join(os.getcwd(), 'database.db')
 
 
 def response_gemini(question, prompt):
@@ -60,7 +63,7 @@ if st.button("Submit"):
 
         # Retrieve and display data
         try:
-            results = sql_retrieve(sql_query, "database.db")
+            results = sql_retrieve(sql_query, db_path)
             st.write("Query Results:")
             if results:
                 for row in results:
