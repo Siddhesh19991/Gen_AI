@@ -107,7 +107,7 @@ def main():
         if st.button("Submit & Process"):
             with st.spinner("Processing..."):
                 raw_text = get_pdf_text(pdf_docs)
-                text_chunks = convert_chunks(raw_text)
+                text_chunks = convert_chuncks(raw_text)
                 convert_vector(text_chunks)
                 st.success("Done")
 
