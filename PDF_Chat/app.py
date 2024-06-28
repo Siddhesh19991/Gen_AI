@@ -36,7 +36,8 @@ def convert_chuncks(text):
 
 
 def convert_vector(chunk):
-    embedding = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+    embedding = GoogleGenerativeAIEmbeddings(
+        model="models/embedding-001", api_key=st.secrets.pdf_credentials.GOOGLE_API_KEY)
     vector = FAISS.from_texts(chunk, embedding)
     vector.save_local("FAISS_vector")
 
