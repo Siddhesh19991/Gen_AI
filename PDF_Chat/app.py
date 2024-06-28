@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 
 
 # load_dotenv()  # to load the variables added in the .env file for local
-
+os.environ["GOOGLE_API_KEY"] = st.secrets.pdf_credentials.GOOGLE_API_KEY
 # genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
 genai.configure(api_key=st.secrets.pdf_credentials.GOOGLE_API_KEY)
 
@@ -37,7 +37,7 @@ def convert_chuncks(text):
 
 def convert_vector(chunk):
     embedding = GoogleGenerativeAIEmbeddings(
-        model="models/embedding-001", api_key=st.secrets.pdf_credentials.GOOGLE_API_KEY)
+        model="models/embedding-001")
     vector = FAISS.from_texts(chunk, embedding)
     vector.save_local("FAISS_vector")
 
