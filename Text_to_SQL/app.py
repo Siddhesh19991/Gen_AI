@@ -61,7 +61,7 @@ if st.button("Submit"):
 
         # Retrieve and display data
         try:
-            results = sql_retrieve(sql_query, "database.db")
+            results = sql_retrieve(sql_query, "Text_to_SQL/database.db")
             st.write("Query Results:")
             if results:
                 for row in results:
